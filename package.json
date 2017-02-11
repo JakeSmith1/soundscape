@@ -1,0 +1,38 @@
+{
+  "name": "soundscapes",
+  "version": "1.0.0",
+  "description": "audio and maps",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakeSmith1/soundscape.git"
+  },
+  "keywords": [
+    "audio",
+    "google",
+    "maps",
+    "vanilla",
+    "js",
+    "node",
+    "express"
+  ],
+  "author": "Jake Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakeSmith1/soundscape/issues"
+  },
+  "homepage": "https://github.com/JakeSmith1/soundscape#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "morgan": "^1.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
