@@ -6,7 +6,7 @@ var audioRouter = require('./audio/audioRouter');
 // has a resourceRoutes.js file with the router ready to go,
 // require them and mount them to their respective routes below
 
-router.use('/users', audioRouter);
+router.use('/audio', audioRouter);
 
 
 module.exports = router;
