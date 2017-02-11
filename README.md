@@ -2,6 +2,8 @@ https://github.com/mattdiamond/Recorderjs
 
 # Audio Places
 
+![alt tag](./client/assets/landingPage.png)
+
 How to Run Locally:
 - npm install
 - npm start
