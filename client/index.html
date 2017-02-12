@@ -54,8 +54,8 @@
 
         <div class="audio-container"><!--  Audio container-->
 
-          <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing upload-file"><!-- Upload Audio Card container-->
-            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+          <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing upload-file"><!-- Upload Audio Card container-->
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
               <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
                 <h2 class="mdl-card__title-text">Upload Audio</h2>
               </div>
@@ -65,56 +65,88 @@
               <div class="mdl-card__actions mdl-card--border">
                 <audio id="uploaded-audio" controls></audio>
                 <input type="file" accept="audio/*" onchange="handleFiles(this.files)" style="display:none" id="upload-audio">
-                 <a id="upload" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent">Upload</a>
+                <a id="upload" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent">Upload</a>
+                <!-- <input name="useThis" type="button" value="select" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent" /> -->
+                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect select-upload" for="use-uploaded">
+                  <input type="radio" id="use-uploaded" class="mdl-radio__button" value="uploaded">
+                  <!-- <span class="mdl-radio__label">Use</span> -->
+                </label>
               </input>
-              </div>
             </div>
-            <!-- <div class="separator mdl-cell--1-col"></div> -->
-          </div><!-- Upload Audio Card container-->
-
-          <!-- seperator -->
+          </div>
           <!-- <div class="separator mdl-cell--1-col"></div> -->
+        </div><!-- Upload Audio Card container-->
 
-          <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing record-file"><!-- Record Auidio Card -->
-            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                <h2 class="mdl-card__title-text">Record Audio</h2>
-              </div>
-              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                Record Some Audio with a built in mic!
-              </div>
-              <div id="recording-inputs" class="mdl-card__actions mdl-card--border">
+        <!-- seperator -->
+        <!-- <div class="separator mdl-cell--1-col"></div> -->
 
-                <audio id="audio-record" controls></audio>
-                <input name="start" type="button" value="record" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent"/>
-                <input name="stop" type="button" value="stop" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent" />
-                <div name="spinner" id="recording-spinner" class="mdl-spinner mdl-js-spinner"></div>
-
-              </div>
+        <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing record-file"><!-- Record Auidio Card -->
+          <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+            <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+              <h2 class="mdl-card__title-text">Record Audio</h2>
             </div>
-          </div> <!-- Record Auidio Card -->
-        </div> <!-- wrapper for audio cards -->
+            <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+              Record Some Audio with a built in mic!
+            </div>
+            <div id="recording-inputs" class="mdl-card__actions mdl-card--border">
 
-        <!-- <div id="floating-panel">
-          <input onclick="deleteMarkers();" type=button value="Delete Markers" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--primary">
-        </div> -->
-        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-        <div id="map" class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+              <audio id="audio-record" controls></audio>
+              <input name="start" type="button" value="record" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent"/>
+              <input name="stop" type="button" value="stop" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent" />
+              <!-- <input name="useThis" type="button" value="select" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent" /> -->
+              <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect select-upload" for="use-recorded">
+                <input type="radio" id="use-recorded" class="mdl-radio__button" value="recorded">
+                <!-- <span class="mdl-radio__label">Use</span> -->
+              </label>
+            </input>
+            <div name="spinner" id="recording-spinner" class="mdl-spinner mdl-js-spinner"></div>
+
+          </div>
         </div>
-      </div>
-    </main>
+      </div> <!-- Record Auidio Card -->
+    </div> <!-- wrapper for audio cards -->
+
+    <!-- <div id="floating-panel">
+    <input onclick="deleteMarkers();" type=button value="Delete Markers" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--primary">
+  </div> -->
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  <div id="map" class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="js/upload_audio.js"></script>
-  <script src="js/record_audio.js"></script>
-  <script src="js/map.js"></script>
-  <script src="js/searchBox.js"></script>
-  <script src="js/geocoder.js"></script>
-  <script src="plugins/recorder.js"></script>
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing record-file"><!-- Submit Audio and Place Card -->
+    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+      <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+        <h2 class="mdl-card__title-text">Submit Audio and Place</h2>
+      </div>
+      <div id="audio-location-information" class="mdl-card__supporting-text mdl-color-text--grey-600">
+        <p>Audio and Location Information</p>
+        <ul class='mdl-list'>
+          <li id="selected-location" class="mdl-list__item"></li>
+          <li id="selected-audio" class="mdl-list__item"><audio id="audio-submission" style="display:none" controls></audio></li>
+        </ul>
+      </div>
+      <div id="submit-ap" class="mdl-card__actions mdl-card--border">
+        <input name="save" type="button" value="Save" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent" />
 
-  <!--  DO NOT ADD your API KEY TO GITHUB -->
-  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script> -->
+      </div>
+    </div>
+  </div> <!-- Sumbit audio and place card -->
+
+</div><!-- end of grid -->
+</main>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="js/upload_audio.js"></script>
+<script src="js/record_audio.js"></script>
+<script src="js/submit_audio_place.js"></script>
+<script src="js/map.js"></script>
+<script src="js/searchBox.js"></script>
+<script src="js/geocoder.js"></script>
+<script src="plugins/recorder.js"></script>
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+<!--  DO NOT ADD your API KEY TO GITHUB -->
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script> -->
 </body>
 </html>

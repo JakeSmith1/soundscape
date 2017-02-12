@@ -30,6 +30,7 @@ function stopRecording() {
   recorder.exportWAV(function(s) {
     audio.src = window.URL.createObjectURL(s);
     saveBlobAsURL(s);
+    saveBlobAsBuffer(s);
   });
 }
 
@@ -49,17 +50,24 @@ var onSuccess = function(s) {
 }
 
 //save audio blob as url to send to s3, called in stopRecordin line 21
-var audioURL;
+var recordedURL, recordedBuffer;
 function saveBlobAsURL(blob) {
   var reader = new FileReader();
   reader.addEventListener("loadend", function() {
-    audioURL = reader.result// reader.result contains the contents of blob as a typed array
+    recordedURL = reader.result// reader.result contains the contents of blob as a typed array
   });
   reader.readAsDataURL(blob);
 }
+function saveBlobAsBuffer(blob) {
+  var reader = new FileReader();
+  reader.addEventListener("loadend", function() {
+    recordedBuffer = reader.result// reader.result contains the contents of blob as a typed array
+  });
+  reader.readAsArrayBuffer(blob);
+}
 
 function handleRecording(e) {
-  e.preventDefault();
+  // e.preventDefault();
   var action = e.target.name;
   if(action === 'start') {
     startRecording();
