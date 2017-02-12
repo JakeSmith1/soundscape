@@ -6,9 +6,12 @@
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+
+    <!-- top of page header -->
     <header class="header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title">Audio Spaces</span>
@@ -22,15 +25,17 @@
             <label class="mdl-textfield__label" for="search">Enter a file name...</label>
           </div>
         </div>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="more-info">
           <i class="material-icons">more_vert</i>
         </button>
-        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+        <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="more-info">
           <li class="mdl-menu__item">About</li>
           <li class="mdl-menu__item">Contact</li>
         </ul>
       </div>
     </header>
+
+    <!-- side navigation -->
     <div class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
       <!-- add href's to these when pages built -->
       <nav class="navigation mdl-navigation mdl-color--blue-grey-900">
@@ -41,88 +46,75 @@
         <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
       </nav>
     </div>
+
+    <!-- page content- audio uploads and map -->
     <main class="mdl-layout__content mdl-color--grey-100">
       <div class="mdl-grid">
-        <!-- Div for Map, evenuallly -->
-        <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
 
 
-        </div>
+        <div class="audio-container"><!--  Audio container-->
 
-        <!-- Upload Audio Card -->
-        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-          <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-            <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-              <h2 class="mdl-card__title-text">Upload Audio</h2>
+          <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing upload-file"><!-- Upload Audio Card container-->
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">Upload Audio</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600 typo-styles__demo">
+                Upload an mp3 file!
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <audio id="uploaded-audio" controls></audio>
+                <input type="file" accept="audio/*" onchange="handleFiles(this.files)" style="display:none" id="upload-audio">
+                 <a id="upload" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent">Upload</a>
+              </input>
+              </div>
             </div>
-            <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-              Choose a file from your computer and enter a location. Please upload only (formats).
+            <!-- <div class="separator mdl-cell--1-col"></div> -->
+          </div><!-- Upload Audio Card container-->
+
+          <!-- seperator -->
+          <!-- <div class="separator mdl-cell--1-col"></div> -->
+
+          <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing record-file"><!-- Record Auidio Card -->
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+                <h2 class="mdl-card__title-text">Record Audio</h2>
+              </div>
+              <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+                Record Some Audio with a built in mic!
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+
+                <audio id="audio-record" controls></audio>
+
+                <input onclick="startRecording()" type="button" value="record" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent"/>
+                <input onclick="stopRecording()" type="button" value="stop" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent" />
+
+              </div>
             </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <audio id="uploaded-audio" controls></audio>
-              <input type="file" accept="audio/*" onchange="handleFiles(this.files)" style="display:none" id="upload-audio">
-               <a id="upload" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent">Upload</a>
-            </input>
-            </div>
-          </div>
-          <div class="separator mdl-cell--1-col"></div>
-        </div>
-        <script type="text/javascript">
-        var audioUpload = document.getElementById("upload-audio");
-        var uploadAudioPlayer = document.getElementById("uploaded-audio");
-        var upload = document.getElementById('upload');
+          </div> <!-- Record Auidio Card -->
+        </div> <!-- wrapper for audio cards -->
 
-        upload.addEventListener("click", function (e) {
-          if (audioUpload) {
-            audioUpload.click();
-          }
-          e.preventDefault(); // prevent navigation to "#"
-        }, false);
-
-        function handleFiles(files) {
-          console.log(files[0], 'files uploads');
-          if (!files.length) {
-            alert('no files uploaded, please try again');
-          } else {
-            var reader = new FileReader();
-            reader.addEventListener("loadend", function() {
-              uploadAudioPlayer.src = reader.result;// reader.result contains the contents of blob as a typed array
-              audioURL = reader.result
-            });
-            reader.readAsDataURL(files[0]);
-            }
-          }
-        </script>
-
-        <!-- seperator -->
-        <div class="separator mdl-cell--1-col"></div>
-
-        <!-- Record Auidio Card -->
-        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-          <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-            <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-              <h2 class="mdl-card__title-text">Record Audio</h2>
-            </div>
-            <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-              Record Some Audio with a built in mic!
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-
-              <audio id="audio-record" controls></audio>
-
-              <input onclick="startRecording()" type="button" value="record" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent"/>
-              <input onclick="stopRecording()" type="button" value="stop and play" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent" />
-
-            </div>
-          </div>
+        <!-- <div id="floating-panel">
+          <input onclick="deleteMarkers();" type=button value="Delete Markers" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--primary">
+        </div> -->
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+        <div id="map" class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
         </div>
       </div>
     </main>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <script src="js/audio.js"></script>
+  <script src="js/upload_audio.js"></script>
+  <script src="js/record_audio.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/searchBox.js"></script>
+  <script src="js/geocoder.js"></script>
   <script src="plugins/recorder.js"></script>
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+  <!--  DO NOT ADD your API KEY TO GITHUB -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZiKfXIEoNphTwpTO11yCVTCoDgpTcBYQ&libraries=places&callback=initMap"></script>
 </body>
 </html>

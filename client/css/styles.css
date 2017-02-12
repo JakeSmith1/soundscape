@@ -1,0 +1,31 @@
+#map {
+  height: 300px;
+}
+
+#floating-panel {
+        position: relative;
+        top: 68px;
+        left: 12%;
+        z-index: 5;
+        background-color: #fff;
+}
+
+#pac-input {
+  width: 200px;
+}
+
+audio {
+  width: 300px;
+  display: block;
+}
+
+div .audio-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+div.upload-file, div.record-file {
+  width: 400px;
+}

@@ -10,7 +10,7 @@ function startRecording() {
   if (navigator.getUserMedia) {
     navigator.getUserMedia({audio: true}, onSuccess, onFail);
   } else {
-    console.log('navigator.getUserMedia not present');
+    alert('your browser does not support this audio upload, try chrome or safari')
   }
 }
 
@@ -24,7 +24,7 @@ function stopRecording() {
 
 /*----------    callbacks for navigator.getUserMedia  on line 11   ----------*/
 var onFail = function(e) {
-  console.log('Rejected!', e);
+  alert('Audio upload failed, please try again, but don\'t try forever!', e);
 };
 
 var onSuccess = function(s) {
