@@ -23,5 +23,5 @@ function addGeoCodeMarker(result, latlng) {
   });
   deleteMarkers();
   markers.push(marker);
-  markerData = latLng;
+  markerData = latlng;
 }

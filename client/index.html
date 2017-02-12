@@ -123,10 +123,11 @@
         <ul class='mdl-list'>
           <li id="selected-location" class="mdl-list__item"></li>
           <li id="selected-audio" class="mdl-list__item"><audio id="audio-submission" style="display:none" controls></audio></li>
+          <!-- <li id="selected-audio" class="mdl-list__item"><audio id="returned" controls></audio></li> -->
         </ul>
       </div>
       <div id="submit-ap" class="mdl-card__actions mdl-card--border">
-        <input name="save" type="button" value="Save" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent" />
+        <input name="save" onClick="saveAudioPlace()" type="button" value="Save" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent" />
 
       </div>
     </div>
