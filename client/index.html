@@ -83,12 +83,12 @@
               <div class="mdl-card__supporting-text mdl-color-text--grey-600">
                 Record Some Audio with a built in mic!
               </div>
-              <div class="mdl-card__actions mdl-card--border">
+              <div id="recording-inputs" class="mdl-card__actions mdl-card--border">
 
                 <audio id="audio-record" controls></audio>
-
-                <input onclick="startRecording()" type="button" value="record" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent"/>
-                <input onclick="stopRecording()" type="button" value="stop" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent" />
+                <input name="start" type="button" value="record" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent"/>
+                <input name="stop" type="button" value="stop" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored--accent" />
+                <div name="spinner" id="recording-spinner" class="mdl-spinner mdl-js-spinner"></div>
 
               </div>
             </div>
@@ -115,6 +115,6 @@
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
   <!--  DO NOT ADD your API KEY TO GITHUB -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
+  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script> -->
 </body>
 </html>
