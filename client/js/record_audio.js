@@ -3,31 +3,44 @@ navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia
 
 //recorder will be an isntance of Recorder which  encodes the output of audio api nodes, returns a blob
 var recorder;
-var audio = document.querySelector('#audio-record');
 
-/*----------   start and stop recording        ----------*/
+//elements:
+var audio = document.querySelector('#audio-record');
+var spinner = document.getElementById('recording-spinner');
+var recordingSection = document.getElementById('recording-inputs');
+
+//all auido events handled through a listnere on the containing div:
+recordingSection.addEventListener('click', handleRecording);
+
+
+/*----------   start and stop recording      ----------*/
 function startRecording() {
   if (navigator.getUserMedia) {
     navigator.getUserMedia({audio: true}, onSuccess, onFail);
   } else {
-    alert('your browser does not support this audio upload, try chrome or safari')
+    alert('your browser does not support this type of audio recording, try chrome or safari')
   }
 }
 
 function stopRecording() {
+  if(!recorder) {
+    return;
+  }
   recorder.stop();
   recorder.exportWAV(function(s) {
     audio.src = window.URL.createObjectURL(s);
     saveBlobAsURL(s);
+    saveBlobAsBuffer(s);
   });
 }
 
 /*----------    callbacks for navigator.getUserMedia  on line 11   ----------*/
 var onFail = function(e) {
-  alert('Audio upload failed, please try again, but don\'t try forever!', e);
+  alert('Audio recording failed, please try again, but don\'t try forever!');
 };
 
 var onSuccess = function(s) {
+  startSpinner(spinner);
   var context = new AudioContext();
   var mediaStreamSource = context.createMediaStreamSource(s);
   recorder = new Recorder(mediaStreamSource);
@@ -37,11 +50,36 @@ var onSuccess = function(s) {
 }
 
 //save audio blob as url to send to s3, called in stopRecordin line 21
-var audioURL;
+var recordedURL, recordedBuffer;
 function saveBlobAsURL(blob) {
   var reader = new FileReader();
   reader.addEventListener("loadend", function() {
-    audioURL = reader.result// reader.result contains the contents of blob as a typed array
+    recordedURL = reader.result// reader.result contains the contents of blob as a typed array
   });
   reader.readAsDataURL(blob);
+}
+function saveBlobAsBuffer(blob) {
+  var reader = new FileReader();
+  reader.addEventListener("loadend", function() {
+    recordedBuffer = reader.result// reader.result contains the contents of blob as a typed array
+  });
+  reader.readAsArrayBuffer(blob);
+}
+
+function handleRecording(e) {
+  // e.preventDefault();
+  var action = e.target.name;
+  if(action === 'start') {
+    startRecording();
+  } else if(action === 'stop') {
+    stopRecording();
+    stopSpinner(spinner);
+  }
+}
+
+function startSpinner(spinner) {
+  spinner.className = "mdl-spinner mdl-js-spinner is-active";
+}
+function stopSpinner(spinner) {
+  spinner.className = "mdl-spinner mdl-js-spinner"
 }

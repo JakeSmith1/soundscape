@@ -1,5 +1,3 @@
-https://github.com/mattdiamond/Recorderjs
-
 # Audio Places
 
 ![alt tag](./client/assets/landingPage.png)

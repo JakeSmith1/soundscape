@@ -29,3 +29,13 @@ div .audio-container {
 div.upload-file, div.record-file {
   width: 400px;
 }
+
+div.mdl-spinner {
+  top:-34px;
+  color: transparent;
+}
+
+label.select-upload {
+  display: inline;
+  margin-left:10px;
+}
