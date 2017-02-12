@@ -121,8 +121,8 @@
       <div id="audio-location-information" class="mdl-card__supporting-text mdl-color-text--grey-600">
         <p>Audio and Location Information</p>
         <ul class='mdl-list'>
-          <li id="selected-location" class="mdl-list__item"></li>
-          <li id="selected-audio" class="mdl-list__item"><audio id="audio-submission" style="display:none" controls></audio></li>
+          <li class="mdl-list__item"><span>Location:  </span><span id="selected-location"></span></li>
+          <li id="selected-audio" class="mdl-list__item"><span>Audio: </span> <audio id="audio-submission" style="display:none" controls></audio></li>
           <!-- <li id="selected-audio" class="mdl-list__item"><audio id="returned" controls></audio></li> -->
         </ul>
       </div>
@@ -148,6 +148,6 @@
 <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
 <!--  DO NOT ADD your API KEY TO GITHUB -->
-<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script> -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initMap"></script>
 </body>
 </html>

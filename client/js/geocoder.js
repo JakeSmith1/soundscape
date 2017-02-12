@@ -1,3 +1,4 @@
+var selectedLocation = document.getElementById('selected-location');
 function geocodeLatLng(geocoder, map, infowindow, latLng) {
   var latlng = {lat: parseFloat(latLng.lat), lng: parseFloat(latLng.lng)};
   geocoder.geocode({'location': latlng}, function(results, status) {
@@ -24,4 +25,5 @@ function addGeoCodeMarker(result, latlng) {
   deleteMarkers();
   markers.push(marker);
   markerData = latlng;
+  selectedLocation.innerHTML = result.formatted_address;
 }
