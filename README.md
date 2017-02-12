@@ -2,7 +2,10 @@ https://github.com/mattdiamond/Recorderjs
 
 # Audio Places
 
+![alt tag](./client/assets/landingPage.png)
+
 How to Run Locally:
+- get an api key from https://developers.google.com/maps/documentation/javascript/get-api-key and put in index.html in the last script tag before </body> where it says YOUR_API_KEY
 - npm install
 - npm start
 - open index.html
